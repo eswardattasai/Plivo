@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Voice Chat Design System - Modern conversational interface with voice capabilities */
+
+@layer base {
+  :root {
+    /* Chat Interface Colors */
+    --background: 220 25% 8%;
+    --foreground: 220 20% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 220 20% 95%;
+
+    /* AI Brand Colors - Purple/Blue Gradient Theme */
+    --primary: 260 75% 60%;
+    --primary-foreground: 220 20% 98%;
+    --primary-glow: 270 85% 70%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 220 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 280 80% 65%;
+    --accent-foreground: 220 20% 98%;
+
+    /* Voice States */
+    --voice-active: 120 70% 55%;
+    --voice-listening: 60 90% 60%;
+    --voice-processing: 280 80% 65%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 220 20% 98%;
+
+    --border: 220 15% 25%;
+    --input: 220 15% 18%;
+    --ring: 260 75% 60%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-voice: linear-gradient(135deg, hsl(var(--voice-active)), hsl(var(--voice-listening)));
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)), hsl(220 25% 6%));
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-voice: 0 0 30px hsl(var(--voice-active) / 0.4);
+    --shadow-message: 0 4px 20px hsl(220 25% 0% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    /* Light mode alternative */
+    --background: 220 20% 98%;
+    --foreground: 220 25% 15%;
+    --card: 220 15% 95%;
+    --primary: 260 75% 50%;
+    --secondary: 220 10% 90%;
+    --muted: 220 10% 92%;
+    --border: 220 15% 85%;
+    --input: 220 15% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Message Bubble Animations */
+  .message-enter {
+    animation: messageSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .voice-pulse {
+    animation: voicePulse 2s infinite;
+  }
+  
+  .typing-indicator {
+    animation: typingDots 1.4s infinite;
+  }
+
+  .voice-wave {
+    animation: voiceWave 1.5s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes messageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes voicePulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(var(--voice-active) / 0.7);
+    }
+    50% {
+      box-shadow: 0 0 0 20px hsl(var(--voice-active) / 0);
+    }
+  }
+
+  @keyframes typingDots {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes voiceWave {
+    0% {
+      transform: scaleY(0.3);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+}
